@@ -1,5 +1,12 @@
 import { CustomerDetails } from '@/components/customer-details'
+type paramsType = Promise<{ id: string }>;
+export default async function Home({
+                                       params,
+                                   }: {
+    params: paramsType;
+}) {
+    const {id} = await params
+    console.log(id)
 
-export default function CustomerPage({ params }: { params: { id: string } }) {
-    return <CustomerDetails customerId={params.id} />
+    return <CustomerDetails customerId={id} />
 }

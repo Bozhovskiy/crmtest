@@ -1,5 +1,12 @@
 import { EmployeeDetails } from '@/components/employee-details'
 
-export default function CustomerPage({ params }: { params: { id: string } }) {
-    return <EmployeeDetails customerId={params.id} />
+type paramsType = Promise<{ id: string }>;
+export default async function Home({
+                                       params,
+                                   }: {
+    params: paramsType;
+}) {
+    const {id} = await params
+    console.log(id)
+    return <EmployeeDetails customerId={id} />
 }
